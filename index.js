@@ -48,6 +48,14 @@ const handleProfile = (req,res) => {
 
 
 app.use(helmet(""));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+// to let the server what kind of things we send, add parameter for it.
+
+
+app.use(cookieParser());
+
 app.use(logger("dev"));
 app.use(betweenHome);
 // use this middleware every website im entering
