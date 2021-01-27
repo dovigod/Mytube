@@ -1,5 +1,4 @@
 const express = require('express')
-// require ==> node module을 어디선가 가져오는것 ,express란 폴더에서 찾을거임 
 const app = express()
 const port = 3000
 const handleListening = () => {
@@ -14,11 +13,22 @@ const handleHome = (req, res) => {
     res.send("Hello from home!")
 
 }
-// problem, there must have responce, else infinite loading... etc).. ok ,error, http message ... 
+
+const handleProfile = (req,res) => {
+
+    res.send("on the profile")
+
+}
+
+// if we want to use this as web server, we need to send html, css file..
+
+
+// conclusion.. basic how it works, make server, make routes, answer.
 
 
 
 
+app.get("/profile",handleProfile)
 
 
 
