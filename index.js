@@ -11,12 +11,22 @@ const handleListening = () => {
 
 }
 
+const betweenHome = (req,res,next ) => {
+    console.log("hello from my ass")
+
+    next()
+}
+
+// i need to give permission to manage request  and to go next connection. therefore there is next parameter
 const handleHome = (req, res) => {
     console.log('Hi from Home!')
 
     res.send("Hello from home!")
 
 }
+//
+
+
 
 const handleProfile = (req,res) => {
 
@@ -28,7 +38,7 @@ const handleProfile = (req,res) => {
 
 
 
-app.get("/profile",handleProfile)
+app.get("/profile",betweenHome, handleProfile)
 
 
 
