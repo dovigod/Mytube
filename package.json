@@ -1,0 +1,11 @@
+{
+  "name": "mytube",
+  "version": "1.0.0",
+  "description": "cloning",
+  "main": "index.js",
+  "author": "Seo_Ji_Sang",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
