@@ -11,7 +11,7 @@ const handleListening = () => {
 const handleHome = (req, res) => {
     console.log('Hi from Home!')
 
-    console.log(req ,res);
+    res.send("Hello from home!")
 
 }
 // problem, there must have responce, else infinite loading... etc).. ok ,error, http message ... 
