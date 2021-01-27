@@ -4,7 +4,6 @@ import helmet from "helmet";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import {userRouter} from "./router";
-/// name must be same
 
 const app = express()
 
@@ -32,8 +31,10 @@ app.use(logger("dev"));
 
 // routes
 
+app.get("/", handleHome);
+app.get("/profile", handleProfile);
 app.use("/user",userRouter);
-// if somebody is getting to url, use route
+
 
 
 export default app;
