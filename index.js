@@ -1,4 +1,8 @@
-const express = require('express')
+// const express = require('express')
+// this is not sexy syntax...by babel, transform
+
+import express from "express";
+
 const app = express()
 const port = 3000
 const handleListening = () => {
@@ -20,10 +24,6 @@ const handleProfile = (req,res) => {
 
 }
 
-// if we want to use this as web server, we need to send html, css file..
-
-
-// conclusion.. basic how it works, make server, make routes, answer.
 
 
 
@@ -33,5 +33,9 @@ app.get("/profile",handleProfile)
 
 
 app.get("/",handleHome)
-//in get method, usually calls two object, request, responce  == who and what kind of data sent,,  
+
 app.listen(port, handleListening)
+
+//npm install @babel/node  
+// stage 0 -> experimental version
+//

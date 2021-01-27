@@ -1,0 +1,11 @@
+////npm install @babel/node  
+// stage 0 -> experimental version
+// configuration of node.js for js
+
+// preset setter.
+
+
+
+{
+    "preset": ["@babel/preset-env"]
+}
