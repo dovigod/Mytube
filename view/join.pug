@@ -2,4 +2,11 @@ extends layouts/main
 
 
 block content
-    p Hello
+    .form__container
+        form(action = routes.login , method = "post")
+            input(type ="text", name ="name" , placeholder = "Full Name")
+            input(type ="email",name = "email", placeholder = "Email")
+            input(type ="password",name = "password", placeholder = "Password")
+            input(type ="password",name = "password", placeholder = "Verify Password")
+            input(type ="submit", placeholder = "Create!")
+        include ./partials/socialLogin

@@ -1,12 +1,10 @@
 
   export const home =(req,res) => res.render("home", {pageTitle : "Home"} );
-  // first argument ==  template, second argument == object of additional informatino to template
  
-
   export const search = (req, res) => {
     const {query: {term : searchingBy}} = req;
 
-// on URL ,, parameters are called query
+    
     res.render("search" ,{ 
       pageTitle : "Search",
       searchingBy : searchingBy,
