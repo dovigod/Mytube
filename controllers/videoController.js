@@ -3,7 +3,15 @@
   // first argument ==  template, second argument == object of additional informatino to template
  
 
-  export const search = (req, res) => res.render("search" ,{ pageTitle : "Search"});
+  export const search = (req, res) => {
+    const {query: {term : searchingBy}} = req;
+
+// on URL ,, parameters are called query
+    res.render("search" ,{ 
+      pageTitle : "Search",
+      searchingBy : searchingBy,
+  });
+  }
 
   export const deleteVideo = (req, res) => res.render("deleteVideo", { pageTitle : "Delete Video"});
 
