@@ -13,6 +13,8 @@ import routes from "./routes";
 const app = express()
 
 app.set('view engine', "pug");
+app.set("views",'./view');
+
 // view engine default is undefined. so we must change it to pug
 
 // by default it will look for the directory of + '/view' so if we want to change, use view method
