@@ -7,6 +7,8 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
+import {localsMiddleWare} from "./middleWares";
+
 
 
 
@@ -20,12 +22,15 @@ app.set("views",'./view');
 // by default it will look for the directory of + '/view' so if we want to change, use view method
 
 //middle-wares
+app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(helmet());
 app.use(logger("dev"));
 
+
+app.use(localsMiddleWare);
+//a middle ware which makes local variable to global
 // routes
 
 
