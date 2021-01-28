@@ -12,7 +12,10 @@ import routes from "./routes";
 
 const app = express()
 
+app.set('view engine', "pug");
+// view engine default is undefined. so we must change it to pug
 
+// by default it will look for the directory of + '/view' so if we want to change, use view method
 
 //middle-wares
 app.use(cookieParser());

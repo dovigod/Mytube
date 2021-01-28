@@ -1,4 +1,3 @@
-  //controller , basiclly logic about whats going on
 
   export const home =(req,res) => res.send("home!!");
 
