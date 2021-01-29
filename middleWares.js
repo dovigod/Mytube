@@ -10,3 +10,13 @@ export const localsMiddleWare = (req, res ,next) => {
     next();
 
 }
+
+
+export const breakSecurityPolicy = (req, res, next) => {
+
+   // res.setHeader("Content-Security-policy","* 'inline-eval';");
+    
+
+    return next();
+    
+}

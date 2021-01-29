@@ -7,7 +7,7 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
-import {localsMiddleWare} from "./middleWares";
+import {localsMiddleWare, breakSecurityPolicy} from "./middleWares";
 
 
 
@@ -17,7 +17,7 @@ const app = express()
 app.set('view engine', "pug");
 app.set("views",'./view');
 
-app.use(helmet());
+app.use(helmet({contentSecurityPolicy: false,}));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -26,6 +26,7 @@ app.use(logger("dev"));
 
 app.use(localsMiddleWare);
 
+app.use(breakSecurityPolicy);
 
 app.use(routes.home,globalRouter);
 app.use(routes.users,userRouter);

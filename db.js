@@ -7,7 +7,7 @@ export const videos = [
         title: 'video awesome',
         description : "fake db data description",
         views: 24,
-        videoFile: "https://archive.org/details/BigBuckBunny_124",
+        videoFile: "http://techslides.com/demos/sample-videos/small.mp4",
         creator: {
             name: "Justin",
             email: "inaki96@naver.com",
@@ -19,7 +19,7 @@ export const videos = [
         title: 'fucking video',
         description : "fake db data description",
         views: 123,
-        videoFile: "https://archive.org/details/BigBuckBunny_124",
+        videoFile: "https://www.youtube.com/watch?v=9mdJV5-eias",
         creator: {
             name: "Justin",
             email: "inaki96@naver.com",
