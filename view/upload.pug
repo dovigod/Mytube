@@ -3,15 +3,15 @@ extends layouts/main
 
 block content
     .form-container
-        form(action=`/users/${routes.upload}` , method = "post")
+        form(action=`/videos${routes.upload}` , method = "post")
 
-        label(for ="file") Video file
-        input(type="file", name="file" , id = "file" )
+            label(for ="file") Video File
+            input(type="file", name="file" , id = "file" , required = true)
 
-        input(type ="text" , name= "title", placeholder= "Title")
+            input(type ="text" , name= "title", placeholder= "Title", required = true)
 
-        input(type ="text", name="discription" , placeholder = "Discription")
+            input(type ="text", name="discription" , placeholder = "Discription", required = true)
 
-        input(type="submit", value ="Upload Video")
-        
+            input(type="submit", value ="Upload Video", require = true)
+            
             

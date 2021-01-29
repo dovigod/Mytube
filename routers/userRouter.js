@@ -13,7 +13,7 @@ userRouter.get(routes.editProfile, editProfile);
 userRouter.get(routes.changePassword, changePassword
 );
 
-userRouter.get(routes.userDetail, userDetail);
+userRouter.get(routes.userDetail(), userDetail);
 // /:id recognize that edit-profile &change password is id so change the order
 
 export default userRouter;
