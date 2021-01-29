@@ -12,8 +12,8 @@ Babel : preset-env , core
 ## Pages: 
 
 - [ ] Home
-- [ ] Join
-- [ ] Log in
+- [x] Join
+- [x] Log in
 - [x] Search ( 21/01/29 )
 - [ ] User Detail
 - [ ] Edit Profile
