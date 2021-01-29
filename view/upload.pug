@@ -2,4 +2,16 @@ extends layouts/main
 
 
 block content
-    p iplod
+    .form-container
+        form(action=`/users/${routes.upload}` , method = "post")
+
+        label(for ="file") Video file
+        input(type="file", name="file" , id = "file" )
+
+        input(type ="text" , name= "title", placeholder= "Title")
+
+        input(type ="text", name="discription" , placeholder = "Discription")
+
+        input(type="submit", value ="Upload Video")
+        
+            

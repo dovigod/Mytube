@@ -17,11 +17,6 @@ const app = express()
 app.set('view engine', "pug");
 app.set("views",'./view');
 
-// view engine default is undefined. so we must change it to pug
-
-// by default it will look for the directory of + '/view' so if we want to change, use view method
-
-//middle-wares
 app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -30,8 +25,6 @@ app.use(logger("dev"));
 
 
 app.use(localsMiddleWare);
-//a middle ware which makes local variable to global
-// routes
 
 
 app.use(routes.home,globalRouter);
