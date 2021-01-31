@@ -1,6 +1,6 @@
 
   import routes from "../routes";
-  import videos from "../models/Videos";
+  import Video from "../models/Videos";
 
 ///async == something that waits for me
 
@@ -8,10 +8,10 @@
   export const  home = async(req,res) => {
 
     try{
-      const video = await videos.find({});
+      const videos = await Video.find({});
       res.render("home", {
         pageTitle : "Home",
-        video,
+        videos
         }
       );
     } catch(error){
@@ -21,10 +21,7 @@
         videos: []
       });
     };
-    // wait until this process
-    // but only waits untill finish, doesn't gurantee its sucessfully finished
-    
-  console.log(videos);
+
 }
  
   export const search = (req, res) => {
@@ -55,7 +52,7 @@
     } = req;
 
 
-    const newVideo = await videos.create({
+    const newVideo = await Video.create({
       fileUrl : path,
       title,
       description
