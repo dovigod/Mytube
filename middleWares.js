@@ -8,7 +8,7 @@ export const localsMiddleWare = (req, res ,next) => {
     res.locals.routes = routes;
     res.locals.videos = videos;
     res.locals.user = {
-        isAuthenticated: true,
+        isAuthenticated: false,
         id: 1
     }
     next();

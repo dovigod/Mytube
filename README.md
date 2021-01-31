@@ -11,13 +11,13 @@ Babel : preset-env , core
 
 ## Pages: 
 
-- [ ] Home
+- [x] Home
 - [x] Join ( 21/01/29)
 - [x] Log in ( 21/01/29)
 - [x] Search ( 21/01/29 )
-- [ ] User Detail
-- [ ] Edit Profile
-- [ ] Change Password
-- [ ] Upload Video
-- [ ] Video Detail
-- [ ] Edit Video
+- [x] User Detail
+- [x] Edit Profile
+- [x] Change Password
+- [x] Upload Video
+- [x] Video Detail
+- [x] Edit Video
