@@ -11,7 +11,6 @@ mongoose.connect(process.env.MONGO_URL,{
     useUnifiedTopology: true,
     }
 );
-// connect to database on string format
 
 const db = mongoose.connection;
 
@@ -23,5 +22,3 @@ db.once("open", handleOpen);
 
 db.on("error", handleError);
 
-
-//dotenv hides information which developer doesn't want to show etc) db url..

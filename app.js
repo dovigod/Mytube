@@ -31,7 +31,6 @@ app.use(breakSecurityPolicy);
 app.use(routes.home,globalRouter);
 app.use(routes.users,userRouter);
 app.use(routes.videos,videoRouter);
-// exclusivly to handle router...
 
 
 
