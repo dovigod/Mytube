@@ -1,6 +1,7 @@
 
 
 import routes from "./routes";
+import multer from "multer";
 
 export const localsMiddleWare = (req, res ,next) => {
 
@@ -25,3 +26,12 @@ export const breakSecurityPolicy = (req, res, next) => {
     return next();
     
 }
+
+const multerVideo = multer({dest : "upload/videos/"});
+// the encoded url will be saved on dest
+
+export const uploadVideoMiddleware = multerVideo.single('videoFile');
+//only can upload one file at a time
+// multer , returns file URL!!
+//enctype ="multipart/form-data")
+// since we are sending a file, the form encoding should be different

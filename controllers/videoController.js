@@ -47,16 +47,24 @@
 
   export const getUpload = (req, res) => res.render("upload", { pageTitle : "Upload"});
 
-  export const postUpload = (req, res) => {
+  export const postUpload = async(req, res) => {
 
     const {
-      body: {file , title , description}
+      body:{ title, description},
+      file: { path }
     } = req;
 
-///**** we dont save the file , but save location dir.... */
-//so need to change
-    console.log(file, title , description);
-    //upload and save it
-    res.redirect(routes.videoDetail(12334));
+
+    const newVideo = await videos.create({
+      fileUrl : path,
+      title,
+      description
+    });
+
+    console.log(newVideo);
+
+   
+  
+    res.redirect(routes.videoDetail(newVideo.id));
   }
  
