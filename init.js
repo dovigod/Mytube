@@ -4,8 +4,6 @@ import dotenv from "dotenv";
 dotenv.config();
 import "./models/Videos";
 import "./models/Comments";
-//now it Data base will work
-
 
 
 const PORT = process.env.PORT || 4000;

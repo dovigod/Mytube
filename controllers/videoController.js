@@ -1,14 +1,31 @@
 
   import routes from "../routes";
+  import Video from "../models/Videos";
 
+///async == something that waits for me
 
   
-  export const home =(req,res) => res.render("home", {
-    pageTitle : "Home",
-    id: videos.id,
-    video: videos
+  export const  home = async(req,res) => {
 
-  } );
+    try{
+      const videos = await Video.find({});
+      res.render("home", {
+        pageTitle : "Home",
+        video: videos
+        }
+      );
+    } catch(error){
+      console.log(error);
+      res.render("home", {
+        pageTitle : "Home",
+        videos: []
+      });
+    };
+    // wait until this process
+    // but only waits untill finish, doesn't gurantee its sucessfully finished
+    
+  console.log(videos);
+}
  
   export const search = (req, res) => {
     const {query: {term : searchingBy}} = req;
@@ -17,7 +34,7 @@
     res.render("search" ,{ 
       pageTitle : "Search",
       searchingBy : searchingBy,
-      videos
+      
   });
   }
 
