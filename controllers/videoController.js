@@ -1,6 +1,6 @@
 
   import routes from "../routes";
-  import Video from "../models/Videos";
+  import videos from "../models/Videos";
 
 ///async == something that waits for me
 
@@ -8,10 +8,10 @@
   export const  home = async(req,res) => {
 
     try{
-      const videos = await Video.find({});
+      const video = await videos.find({});
       res.render("home", {
         pageTitle : "Home",
-        video: videos
+        video,
         }
       );
     } catch(error){
@@ -49,11 +49,13 @@
 
   export const postUpload = (req, res) => {
 
-    console.log(111);
     const {
       body: {file , title , description}
     } = req;
 
+///**** we dont save the file , but save location dir.... */
+//so need to change
+    console.log(file, title , description);
     //upload and save it
     res.redirect(routes.videoDetail(12334));
   }
