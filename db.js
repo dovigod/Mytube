@@ -18,6 +18,8 @@ const db = mongoose.connection;
 const handleError = () => console.log(`❌ Error on connection '127.0.0.1: 27017' error = ${error}`);
 
 const handleOpen = error => console.log("✅ Connected to DB '127.0.0.1: 27017'")
+
+
 db.once("open", handleOpen);
 
 db.on("error", handleError);

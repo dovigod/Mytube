@@ -35,19 +35,18 @@ const routes = {
     else{
       return USER_DETAIL;
     }
-    ;
-  }
-  ,
+  },
   editProfile: EDIT_PROFILE,
   changePassword: CHANGE_PASSWORD,
   videos: VIDEOS,
   upload: UPLOAD,
-  videoDetail: (id) =>{
+  videoDetail: id =>{
 
     if(id){
       return `/videos/${id}`;
     }
     else{
+      console.log("hello");
       return VIDEO_DETAIL;
     }
   },

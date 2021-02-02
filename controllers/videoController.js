@@ -21,7 +21,6 @@
         videos: []
       });
     };
-
 }
  
   export const search = (req, res) => {
@@ -38,14 +37,44 @@
   export const deleteVideo = (req, res) => res.render("deleteVideo", { pageTitle : "Delete Video"});
 
   export const editVideo = (req, res) => res.render("editVideo", { pageTitle : "Edit Video"});
-  export const videoDetail = (req, res) => res.render("videoDetail" , { pageTitle : "Video Detail"});
 
 
 
-  export const getUpload = (req, res) => res.render("upload", { pageTitle : "Upload"});
+  export const videoDetail = async(req, res) => {
+
+    //console.log(req.params); // id is a varable as we see
+    //:potato ==> variable infos..
+    console.log(req.url);
+    const {
+      params: {id}
+    } = req;
+
+
+    console.log(id);
+
+    try{
+      const video = await Video.findById(id);
+      res.render("videoDetail" , {
+        video,
+        pageTitle : "Video Detail"
+      })
+    } catch(error){
+      console.log(error);
+      res.redirect(routes.home);
+
+    }
+    //console.log(video);
+    // find on mongoose documentation
+}
+
+
+  export const getUpload = (req, res) => {
+
+    console.log(req.url);
+    res.render("upload", { pageTitle : "Upload"});
+  }
 
   export const postUpload = async(req, res) => {
-
     const {
       body:{ title, description},
       file: { path }
