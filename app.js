@@ -7,14 +7,11 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
-import {localsMiddleWare, breakSecurityPolicy} from "./middleWares";
+import {localsMiddleWare, breakSecurityPolicy} from './middleWares';
 
-
-
-
-const app = express()
+const app = express();
 app.use(helmet({contentSecurityPolicy: false,}));
-app.set('view engine', "pug");
+app.set('view engine', 'pug');
 app.set("views",'./view');
 
 app.use("/uploads", express.static("uploads"));

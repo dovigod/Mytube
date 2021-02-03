@@ -26,9 +26,9 @@ export const postJoin = (req , res) => {
 
     res.render("join", {
         pageTitle : "Join",
-        name : name,
+        name,
         password1: password[0],
-        email: email,
+        email,
         password2: password[1],
         
     })

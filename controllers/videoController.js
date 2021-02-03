@@ -8,7 +8,8 @@
   export const  home = async(req,res) => {
 
     try{
-      const videos = await Video.find({});
+      const videos = await Video.find({}).sort({_id : -1});
+      //its a promise of reverseing
       res.render("home", {
         pageTitle : "Home",
         videos
@@ -23,15 +24,12 @@
     };
 }
  
-  export const search = (req, res) => {
+  export const search = async(req, res) => {
     const {query: {term : searchingBy}} = req;
 
     
-    res.render("search" ,{ 
-      pageTitle : "Search",
-      searchingBy : searchingBy,
-      
-  });
+    
+    
   }
 
   export const deleteVideo = async(req, res) => {
@@ -53,6 +51,8 @@
 
   export const editVideo = async(req, res) => {
 
+
+    
     const {
       params : {id}
     } = req;

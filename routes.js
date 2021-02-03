@@ -25,7 +25,14 @@ const routes = {
   join: JOIN,
   login: LOGIN,
   logout: LOGOUT,
-  search: SEARCH,
+  search: (title) =>{
+    if(title){
+      return `/${title}`;
+    }
+    else{
+      return SEARCH;
+    }
+  },
   users: USERS,
   userDetail: (id) =>{
 

@@ -15,9 +15,9 @@ mongoose.connect(process.env.MONGO_URL,{
 const db = mongoose.connection;
 
 
-const handleError = () => console.log(`❌ Error on connection '127.0.0.1: 27017' error = ${error}`);
+const handleError = error => console.log(`❌ Error on connection '127.0.0.1: 27017' error = ${error}`);
 
-const handleOpen = error => console.log("✅ Connected to DB '127.0.0.1: 27017'")
+const handleOpen = () => console.log(`✅ Connected to DB '127.0.0.1: 27017`)
 
 
 db.once("open", handleOpen);
