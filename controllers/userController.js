@@ -50,7 +50,7 @@ export const getLogin = (req , res) => {
 
 export const postLogin = (req, res) => {
 
-    const { body :{ email , password}} = req;
+//    const { body :{ email , password}} = req;
 // will compare with DB
     
 

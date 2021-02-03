@@ -2,14 +2,12 @@
   import routes from "../routes";
   import Video from "../models/Videos";
 
-///async == something that waits for me
-
   
   export const  home = async(req,res) => {
 
     try{
       const videos = await Video.find({}).sort({_id : -1});
-      //its a promise of reverseing
+     
       res.render("home", {
         pageTitle : "Home",
         videos
@@ -26,6 +24,27 @@
  
   export const search = async(req, res) => {
     const {query: {term : searchingBy}} = req;
+    let videos = [];
+    try{
+      videos = await Video.find({ title: {
+        $regex: searchingBy,
+        $options: "i",
+        // i = insensitive , can take upper,lower case
+      }})
+      //find everything that contains term
+
+    }catch(error){
+      console.log(error);
+
+    }
+
+    res.render("search",{
+      pageTitle : "Search",
+      searchingBy,
+      videos,
+    });
+
+
 
     
     
