@@ -29,6 +29,5 @@ export const breakSecurityPolicy = (req, res, next) => {
 
 const multerVideo = multer({dest : "uploads/videos/"});
 
-// /upload/videos ==> make directory on rooot..
 
 export const uploadVideoMiddleware = multerVideo.single('videoFile');

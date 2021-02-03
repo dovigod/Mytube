@@ -34,9 +34,59 @@
   });
   }
 
-  export const deleteVideo = (req, res) => res.render("deleteVideo", { pageTitle : "Delete Video"});
+  export const deleteVideo = async(req, res) => {
 
-  export const editVideo = (req, res) => res.render("editVideo", { pageTitle : "Edit Video"});
+    const {
+      params : {id}
+    } = req;
+
+    try{
+       await Video.findOneAndRemove({ _id : id});
+
+    }catch(e){
+      console.log("error on delete-video controller");
+
+
+    }
+    res.redirect(routes.home);
+  } 
+
+  export const editVideo = async(req, res) => {
+
+    const {
+      params : {id}
+    } = req;
+
+    try{
+      const video = await Video.findById(id);
+      res.render("editVideo", { 
+        pageTitle : `Edit ${video.title}`, 
+        video
+      })
+    }catch(e){
+      
+      res.redirect(routes.home);
+
+    }
+  }
+
+  export const postEditVideo = async(req, res) => {
+
+    const {
+      params : {id},
+      body: {title,description}
+    } = req;
+    console.log("posting!!!");
+    try{
+      await Video.findOneAndUpdate( { _id: id },{ title , description});
+
+      res.redirect(routes.videoDetail(id));
+
+    } catch(e){
+      res.redirect(routes.home);
+    }
+
+  }
 
 
 
@@ -56,15 +106,13 @@
       const video = await Video.findById(id);
       res.render("videoDetail" , {
         video,
-        pageTitle : "Video Detail"
+        pageTitle : video.title
       })
     } catch(error){
       console.log(error);
       res.redirect(routes.home);
 
     }
-    //console.log(video);
-    // find on mongoose documentation
 }
 
 
@@ -89,8 +137,6 @@
 
     console.log(newVideo);
 
-   
-  
     res.redirect(routes.videoDetail(newVideo.id));
   }
  

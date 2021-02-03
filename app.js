@@ -19,13 +19,6 @@ app.set("views",'./view');
 
 app.use("/uploads", express.static("uploads"));
 
-// dealing with only one server is nono
-// and if we use this method, we could get attacked by uploading large file
-//user.. like this created ones hould be seperate with server
-//static files are usually logos for css .. frontend
-//but not a good practice.. because problem happens when you update your code
-// it is neccesarry because without, express will try to find directory with routers, buut it will never match.. so, by using express.static, it will skip everything and find it on given dir
-
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

@@ -3,15 +3,12 @@ extends layouts/main
 
 block content
     .form-container
-        form(action=`/users/${routes.upload}` , method = "post")
+        form(action=routes.editVideo(video.id) , method = "post")
 
-        label(for ="file") Video file
-        input(type="file", name="file" , id = "file" )
+            input(type ="text" , name= "title", placeholder= "Title" , value = video.title)
 
-        input(type ="text" , name= "title", placeholder= "Title")
+            textarea(type ="text", name="description" , placeholder = "Description")= video.description
 
-        input(type ="text", name="description" , placeholder = "Description")
-
-        input(type="submit", value ="Edit Video")
-    a.delete-video( href=`/videos/${routes.deleteVideo}` ) Delete Video
+            input(type="submit", value ="Edit Video")
+    a.delete-video( href=routes.deleteVideo(video.id) ) Delete Video
         
