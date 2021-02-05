@@ -25,8 +25,7 @@ app.use(logger("dev"));
 app.use(localsMiddleWare);
 
 app.use(breakSecurityPolicy);
-
-app.use(routes.home,globalRouter);
+app.use(routes.home , globalRouter);
 app.use(routes.users,userRouter);
 app.use(routes.videos,videoRouter);
 
