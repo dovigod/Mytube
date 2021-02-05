@@ -25,6 +25,14 @@ const config = {
 	module: {
 		rules: [
 			{
+				test: /\.(js)$/,
+				use: [
+					{
+						loader: 'babel-loader'
+					}
+				]
+			},
+			{
 				test: /\.(scss|sass)$/,
 				// regular expression
 				//test if it is scss
@@ -42,7 +50,7 @@ const config = {
 						loader: 'postcss-loader',
 						options: {
 							postcssOptions: {
-								plugins: [['autoprefixer']]
+								plugins: [[autoprefixer]]
 							}
 						}
 					}, // takes css and plugin and translates
@@ -55,13 +63,15 @@ const config = {
 	},
 	output: {
 		path: OUTPUT_DIR,
-		filename: '[name].js'
+		filename: '[name].js',
+		chunkLoading: false,
+		wasmLoading: false
 	},
 	plugins: [
 		new MiniCssExtractPlugin({
 			// Options similar to the same options in webpackOptions.output
 			// both options are optional
-			filename: '[name].css'
+			filename: 'styles.css'
 		})
 	]
 };

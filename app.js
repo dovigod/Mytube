@@ -1,36 +1,34 @@
-import express from "express";
-import logger from "morgan";
-import helmet from "helmet";
-import bodyParser from "body-parser";
-import cookieParser from "cookie-parser";
-import userRouter from "./routers/userRouter";
-import videoRouter from "./routers/videoRouter";
-import globalRouter from "./routers/globalRouter";
-import routes from "./routes";
-import {localsMiddleWare, breakSecurityPolicy} from './middleWares';
+import express from 'express';
+import logger from 'morgan';
+import helmet from 'helmet';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import userRouter from './routers/userRouter';
+import videoRouter from './routers/videoRouter';
+import globalRouter from './routers/globalRouter';
+import routes from './routes';
+import path from 'path';
+import { localsMiddleWare, breakSecurityPolicy } from './middleWares';
 
 const app = express();
-app.use(helmet({contentSecurityPolicy: false,}));
+app.use(helmet({ contentSecurityPolicy: false }));
 app.set('view engine', 'pug');
-app.set("views",'./view');
+app.set('views', './view');
 
-app.use("/uploads", express.static("uploads"));
+app.use('/uploads', express.static('uploads'));
 
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(logger("dev"));
-
-
+app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(express.static(path.join(__dirname, '/static')));
+app.use(logger('dev'));
+//app.use(express.static(`${__dirname}/static`));
+//app.use('static/main.css', express.static('main'));
 app.use(localsMiddleWare);
 
 app.use(breakSecurityPolicy);
-app.use(routes.home , globalRouter);
-app.use(routes.users,userRouter);
-app.use(routes.videos,videoRouter);
-
-
-
+app.use(routes.home, globalRouter);
+app.use(routes.users, userRouter);
+app.use(routes.videos, videoRouter);
 
 export default app;
-
