@@ -1,34 +1,23 @@
+import multer from 'multer';
+import routes from './routes';
 
+export const localsMiddleWare = (req, res, next) => {
+	res.locals.siteName = 'JS tube';
+	res.locals.routes = routes;
+	res.locals.user = {
+		isAuthenticated: true,
+		id: 1
+	};
 
-import multer from "multer";
-import routes from "./routes";
-
-
-export const localsMiddleWare = (req, res ,next) => {
-
-    res.locals.siteName = 'WeTube';
-    res.locals.routes = routes;
-    res.locals.user = {
-        isAuthenticated: true,
-        id: 1
-    }
-
-
-    next();
-
-}
-
+	next();
+};
 
 export const breakSecurityPolicy = (req, res, next) => {
+	// res.setHeader("Content-Security-policy","* 'inline-eval';");
 
-   // res.setHeader("Content-Security-policy","* 'inline-eval';");
-    
+	return next();
+};
 
-    return next();
-    
-}
-
-const multerVideo = multer({dest : "uploads/videos/"});
-
+const multerVideo = multer({ dest: 'uploads/videos/' });
 
 export const uploadVideoMiddleware = multerVideo.single('videoFile');
