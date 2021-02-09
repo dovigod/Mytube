@@ -8,6 +8,28 @@ main {
 	min-height: 70vh;
 }
 
+button {
+	input:not([type='file']),
+	textarea,
+	.fileUpload {
+		padding: 7px 10px;
+		width: 100%;
+		border: none;
+		border-radius: 5px;
+		font-size: 14px;
+		color: $black;
+		font-weight: 600;
+		background-color: white;
+		max-width: 320px;
+		resize: none;
+		&::placeholder {
+			font-weight: 300;
+			color: rgba(0, 0, 0, 0.7);
+		}
+	}
+}
+
+/*
 button,
 input {
 	input:not([type='file']),
@@ -27,23 +49,31 @@ input {
 			font-weight: 300;
 			color: rgba(0, 0, 0, 0.7);
 		}
-	}
-	button {
-		border: none;
-		background-color: #3498db;
-		color: white;
-	}
-
-	button .delete {
-		background-color: $dark-red;
-	}
-
-	button,
-	input[type='submit'] {
-		cursor: pointer;
-	}
+    }*/
+button {
+	border-radius: 3px;
+	border: none;
+	background-color: #3498db;
+	color: white;
 }
 
+button.delete {
+	background-color: $dark-red;
+}
+
+button,
+input[type='submit'] {
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+}
 video {
 	width: 100%;
+}
+
+textarea {
+	border-radius: 3px;
 }

@@ -136,10 +136,7 @@ main {
 
 button input:not([type='file']),
 button textarea,
-button .fileUpload,
-input input:not([type='file']),
-input textarea,
-input .fileUpload {
+button .fileUpload {
   padding: 7px 10px;
   width: 100%;
   border: none;
@@ -150,39 +147,61 @@ input .fileUpload {
   background-color: white;
   max-width: 320px;
   resize: none; }
-  button input:not([type='file'])::-moz-placeholder, button textarea::-moz-placeholder, button .fileUpload::-moz-placeholder, input input:not([type='file'])::-moz-placeholder, input textarea::-moz-placeholder, input .fileUpload::-moz-placeholder {
+  button input:not([type='file'])::-moz-placeholder, button textarea::-moz-placeholder, button .fileUpload::-moz-placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7); }
-  button input:not([type='file']):-ms-input-placeholder, button textarea:-ms-input-placeholder, button .fileUpload:-ms-input-placeholder, input input:not([type='file']):-ms-input-placeholder, input textarea:-ms-input-placeholder, input .fileUpload:-ms-input-placeholder {
+  button input:not([type='file']):-ms-input-placeholder, button textarea:-ms-input-placeholder, button .fileUpload:-ms-input-placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7); }
   button input:not([type='file'])::placeholder,
   button textarea::placeholder,
-  button .fileUpload::placeholder,
-  input input:not([type='file'])::placeholder,
-  input textarea::placeholder,
-  input .fileUpload::placeholder {
+  button .fileUpload::placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7); }
 
-button button,
-input button {
+/*
+button,
+input {
+	input:not([type='file']),
+	textarea,
+	.fileUpload {
+		padding: 7px 10px;
+		width: 100%;
+		border: none;
+		border-radius: 5px;
+		font-size: 14px;
+		color: $black;
+		font-weight: 600;
+		background-color: white;
+		max-width: 320px;
+		resize: none;
+		&::placeholder {
+			font-weight: 300;
+			color: rgba(0, 0, 0, 0.7);
+		}
+    }*/
+button {
+  border-radius: 3px;
   border: none;
   background-color: #3498db;
   color: white; }
 
-button button .delete,
-input button .delete {
+button.delete {
   background-color: #bb2f2a; }
 
-button button,
-button input[type='submit'],
-input button,
-input input[type='submit'] {
+button,
+input[type='submit'] {
+  border-radius: 3px;
   cursor: pointer; }
+
+a {
+  text-decoration: none; }
 
 video {
   width: 100%; }
+
+textarea {
+  border-radius: 3px; }
 
 .header {
   background-color: #ea232c;
@@ -238,9 +257,6 @@ video {
   display: grid;
   grid-template-columns: repeat(6, minmax(150px, 1fr));
   grid-gap: 30px; }
-  .home-videos .videoBlock {
-    -o-object-fit: fill;
-       object-fit: fill; }
   .home-videos .videoBlock:first-child,
   .home-videos .videoBlock:nth-child(2) {
     grid-column: span 3; }
@@ -277,21 +293,34 @@ video {
     width: 100%;
     max-width: 320px;
     margin-bottom: 50px; }
-    .form-container form input input:not([type='file']),
-    .form-container form input .fileUpload {
+    .form-container form input {
+      border: none; }
+    .form-container form input:not([type='file']),
+    .form-container form .fileUpload {
       display: block;
       width: 100%;
       padding-top: 10px;
-      margin-bottom: 25px; }
+      padding-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+      .form-container form input:not([type='file']):not(:last-child),
+      .form-container form .fileUpload:not(:last-child) {
+        margin-bottom: 25px; }
     .form-container form textarea {
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      margin-bottom: 25px; }
+      margin-bottom: 25px;
+      width: 100%; }
     .form-container form input[type='submit'] {
       background-color: #3498db;
-      color: white; }
+      color: white;
+      border: none; }
   .form-container a {
     max-width: 320px;
     width: 100%; }
+    .form-container a button {
+      border-radius: 3px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      width: 100%; }
   .form-container .fileUpload label {
     font-weight: 300;
     margin-right: 10px; }
@@ -333,9 +362,6 @@ video {
   display: grid;
   grid-template-columns: repeat(6, minmax(150px, 1fr));
   grid-gap: 30px; }
-  .home-videos .videoBlock {
-    -o-object-fit: fill;
-       object-fit: fill; }
   .home-videos .videoBlock:first-child,
   .home-videos .videoBlock:nth-child(2) {
     grid-column: span 3; }
@@ -356,14 +382,7 @@ video {
     margin-top: 25px; }
     .video-detail__container .video__info button {
       width: 100px;
-      border: none;
-      border-radius: 3px;
-      margin-bottom: 25px;
-      background-color: #3498db; }
-      .video-detail__container .video__info button a {
-        text-decoration: none;
-        color: white;
-        font-weight: bold; }
+      margin-bottom: 25px; }
     .video-detail__container .video__info .video__title,
     .video-detail__container .video__info .video__views,
     .video-detail__container .video__info .video__description {

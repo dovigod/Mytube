@@ -7,7 +7,6 @@ import userRouter from './routers/userRouter';
 import videoRouter from './routers/videoRouter';
 import globalRouter from './routers/globalRouter';
 import routes from './routes';
-import path from 'path';
 import { localsMiddleWare, breakSecurityPolicy } from './middleWares';
 
 const app = express();

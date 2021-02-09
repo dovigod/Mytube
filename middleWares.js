@@ -5,7 +5,7 @@ export const localsMiddleWare = (req, res, next) => {
 	res.locals.siteName = 'JS tube';
 	res.locals.routes = routes;
 	res.locals.user = {
-		isAuthenticated: true,
+		isAuthenticated: false,
 		id: 1
 	};
 
