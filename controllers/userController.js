@@ -8,9 +8,9 @@ export const getJoin = (req, res) => {
 };
 
 export const postJoin = async (req, res) => {
-	const { name, email, password } = req.body;
+	const { name, email, password , password2} = req.body;
 
-	if (password[0] !== password[1]) {
+	if (password !== password2) {
 		res.status(400);
 		res.render('join', { pageTitle: 'join' });
 		//if wrong with verification,, make status code 400 bad request
@@ -31,9 +31,9 @@ export const postJoin = async (req, res) => {
 	res.render('join', {
 		pageTitle: 'Join',
 		name,
-		password1: password[0],
+		password1: password,
 		email,
-		password2: password[1]
+		password2
 	});
 };
 
@@ -59,4 +59,5 @@ export const editProfile = (req, res) => {
 		pageTitle: 'Edit Profile'
 	});
 };
+
 export const userDetail = (req, res) => res.render('userDetail');
