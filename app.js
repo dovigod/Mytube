@@ -1,4 +1,5 @@
 import express from 'express';
+import passport from 'passport';
 import logger from 'morgan';
 import helmet from 'helmet';
 import bodyParser from 'body-parser';
@@ -8,6 +9,7 @@ import videoRouter from './routers/videoRouter';
 import globalRouter from './routers/globalRouter';
 import routes from './routes';
 import { localsMiddleWare, breakSecurityPolicy } from './middleWares';
+import './passport';
 
 const app = express();
 app.use(helmet({ contentSecurityPolicy: false }));
@@ -20,11 +22,13 @@ app.use('/static', express.static('static'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-//app.use(express.static(path.join(__dirname, 'static')));
 
 app.use(logger('dev'));
-//app.use(express.static(`${__dirname}/static`));
-//app.use('static/main.css', express.static('main'));
+
+// from cookieparser, flow down , after initializing passport, passport will look into cookie, and use it
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(localsMiddleWare);
 
 app.use(breakSecurityPolicy);

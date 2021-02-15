@@ -1,3 +1,4 @@
+import passport from 'passport';
 import routes from '../routes';
 import User from '../models/user';
 
@@ -7,8 +8,8 @@ export const getJoin = (req, res) => {
 	});
 };
 
-export const postJoin = async (req, res) => {
-	const { name, email, password , password2} = req.body;
+export const postJoin = async (req, res, next) => {
+	const { name, email, password, password2 } = req.body;
 
 	if (password !== password2) {
 		res.status(400);
@@ -21,11 +22,11 @@ export const postJoin = async (req, res) => {
 				email
 			});
 			await User.register(user, password);
+			next();
 		} catch (e) {
 			console.log(e);
 			res.redirect(routes.home);
 		}
-		res.redirect(routes.home);
 	}
 
 	res.render('join', {
@@ -43,12 +44,16 @@ export const getLogin = (req, res) => {
 	});
 };
 
-export const postLogin = (req, res) => {
-	//    const { body :{ email , password}} = req;
-	// will compare with DB
+// lets make this to middle ware, because passport is configured to find for password and email.
 
-	res.redirect(routes.home);
-};
+// from postJoin, it will handle information
+
+// 현재 쓰는 strategy ->  email 과 pw이용하는거임
+
+export const postLogin = passport.authenticate('local', {
+	failureRedirect: routes.login,
+	successRedirect: routes.home
+});
 
 export const logout = (req, res) => res.redirect(routes.home);
 
