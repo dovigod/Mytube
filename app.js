@@ -1,9 +1,11 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import passport from 'passport';
+import session from 'express-session';
 import logger from 'morgan';
 import helmet from 'helmet';
 import bodyParser from 'body-parser';
-import cookieParser from 'cookie-parser';
+
 import userRouter from './routers/userRouter';
 import videoRouter from './routers/videoRouter';
 import globalRouter from './routers/globalRouter';
@@ -18,14 +20,22 @@ app.set('views', './view');
 
 app.use('/uploads', express.static('uploads'));
 app.use('/static', express.static('static'));
-
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(logger('dev'));
+app.use(
+	session({
+		secret: `${process.env.COOKIE_SECRET}`,
+		resave: true,
+		saveUninitialized: false
+	})
+);
 
-// from cookieparser, flow down , after initializing passport, passport will look into cookie, and use it
+// by using session,, express is ready to handle cookie
+
+//it deserialize cookie
+
 app.use(passport.initialize());
 app.use(passport.session());
 

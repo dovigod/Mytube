@@ -5,10 +5,8 @@ export const localsMiddleWare = (req, res, next) => {
 	res.locals.siteName = 'JS tube';
 	res.locals.routes = routes;
 	res.locals.user = req.user || {};
-	
 
-	//passport가 serialize, deserialize는 물론 request에도 유저 정보 올려줌
-
+	console.log(req.user);
 
 	next();
 };
