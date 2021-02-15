@@ -28,14 +28,6 @@ export const postJoin = async (req, res, next) => {
 			res.redirect(routes.home);
 		}
 	}
-
-	res.render('join', {
-		pageTitle: 'Join',
-		name,
-		password1: password,
-		email,
-		password2
-	});
 };
 
 export const getLogin = (req, res) => {

@@ -4,9 +4,7 @@ import routes from './routes';
 export const localsMiddleWare = (req, res, next) => {
 	res.locals.siteName = 'JS tube';
 	res.locals.routes = routes;
-	res.locals.user = req.user || {};
-
-	console.log(req.user);
+	res.locals.user = req.user || null;
 
 	next();
 };
@@ -20,3 +18,19 @@ export const breakSecurityPolicy = (req, res, next) => {
 const multerVideo = multer({ dest: 'uploads/videos/' });
 
 export const uploadVideoMiddleware = multerVideo.single('videoFile');
+
+export const onlyPublic = (req, res, next) => {
+	if (req.user) {
+		res.redirect(routes.home);
+	} else {
+		next();
+	}
+};
+
+export const onlyPrivate = (req, res, next) => {
+	if (!req.user) {
+		res.redirect(routes.home);
+	} else {
+		next();
+	}
+};
