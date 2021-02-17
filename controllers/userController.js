@@ -36,18 +36,26 @@ export const getLogin = (req, res) => {
 	});
 };
 
-// lets make this to middle ware, because passport is configured to find for password and email.
-
-// from postJoin, it will handle information
-
-// 현재 쓰는 strategy ->  email 과 pw이용하는거임
-
 export const postLogin = passport.authenticate('local', {
 	failureRedirect: routes.login,
 	successRedirect: routes.home
 });
 
-export const logout = (req, res) => res.redirect(routes.home);
+export const githubLogin = passport.authenticate('github');
+
+export const githubLoginCallBack = (accessToken, refreshToken, profile, cb) => {
+	console.log(accessToken, refreshToken, profile, cb);
+};
+
+export const postGitHubLogIn = (req, res) => {
+	res.send(routes.home);
+};
+// cb is provided by passport, which will announce us about success of call
+export const logout = (req, res) => {
+	req.logout();
+	//passport handles it
+	res.redirect(routes.home);
+};
 
 export const changePassword = (req, res) => res.render('changePassword');
 
