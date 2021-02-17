@@ -10,7 +10,7 @@ passport.use(
 		{
 			clientID: '4f64561bfa78d9af7c39',
 			clientSecret: 'a232e7e357f631ef3ea15e78bf43ccf59f98a706',
-			callbackURL: `http://localhost:4000/${routes.githubCallBack}`
+			redirect_uri: `http://localhost:4000/${routes.githubCallBack}`
 		},
 		githubLoginCallBack
 	)
