@@ -20,6 +20,11 @@
 	.social-login--github {
 		background-color: $black;
 		color: white;
+		text-decoration: none;
+	}
+
+	.social-login--github:visited {
+		color: white;
 	}
 	.social-login--facebook {
 		background-color: #3a5998;

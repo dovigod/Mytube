@@ -6,9 +6,10 @@ import './db';
 import './models/Videos';
 import './models/Comments';
 import './models/user';
+import testing from './passport';
 
 const PORT = process.env.PORT || 4000;
 
 const handleListening = () => console.log(`✅listening on localhost:${PORT}`);
-console.log(typeof process.env.GH_ID);
+
 app.listen(PORT, handleListening);

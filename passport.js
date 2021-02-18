@@ -3,15 +3,19 @@ import GithubStrategy from 'passport-github';
 import routes from './routes';
 import User from './models/user';
 import { githubLoginCallBack } from './controllers/userController';
+import keys from './keys';
 
 passport.use(User.createStrategy());
+
 passport.use(
 	new GithubStrategy(
 		{
-			clientID: '4f64561bfa78d9af7c39',
-			clientSecret: 'a232e7e357f631ef3ea15e78bf43ccf59f98a706',
+			clientID: keys.GH_ID,
+			clientSecret: keys.GH_SECRET,
+			callbackURL: `http://localhost:4000/auth/github/callback`,
 			redirect_uri: `http://localhost:4000/${routes.githubCallBack}`
 		},
+
 		githubLoginCallBack
 	)
 );

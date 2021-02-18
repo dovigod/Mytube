@@ -45,19 +45,34 @@ export const githubLogin = passport.authenticate('github');
 
 export const githubLoginCallBack = async (accessToken, refreshToken, profile, cb) => {
 	const {
-		_json: { name, id, avatar_url, email }
+		_json: { name, id, avatar_url: avatarUrl, email }
 	} = profile;
 
 	try {
-	} catch (e) {
-		console.log(e);
-	}
+		const user = await User.findOne({ email });
 
-	console.log(accessToken, refreshToken, profile, cb);
+		if (user) {
+			user.githubId = id;
+
+			return cb(null, user);
+		} else {
+			const newUser = await User.create({
+				email,
+				name,
+				avatarUrl,
+				githubId: id
+			});
+
+			return cb(null, newUser);
+		}
+	} catch (e) {
+		return cb(e);
+	}
+	// 성공시 callback 저렇게 반환해야함
 };
 
 export const postGitHubLogIn = (req, res) => {
-	res.send(routes.home);
+	res.redirect(routes.home);
 };
 // cb is provided by passport, which will announce us about success of call
 export const logout = (req, res) => {
