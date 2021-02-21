@@ -34,6 +34,6 @@ globalRouter.get(
 	passport.authenticate('github', { failureRedirect: '/login' }),
 	postGitHubLogIn
 );
-globalRouter.get(routes.me, getMe);
+globalRouter.get(routes.me, onlyPrivate, getMe);
 
 export default globalRouter;

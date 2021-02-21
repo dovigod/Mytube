@@ -6,7 +6,6 @@ import './db';
 import './models/Videos';
 import './models/Comments';
 import './models/user';
-import testing from './passport';
 
 const PORT = process.env.PORT || 4000;
 
