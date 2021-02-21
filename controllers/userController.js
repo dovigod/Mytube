@@ -82,6 +82,39 @@ export const logout = (req, res) => {
 	res.redirect(routes.home);
 };
 
+export const facebookLogIn = passport.authenticate('facebook');
+
+export const facebookLoginCallback = async (ac, rf, profile, cb) => {
+	const {
+		_json: { id, email, name }
+	} = profile;
+
+	try {
+		const user = await User.findById({ email });
+
+		if (user) {
+			user.facebookId = id;
+			user.save();
+			return cb(null, user);
+		}
+
+		const newUser = await User.create({
+			email,
+			name,
+			facebookId: id,
+			avatarUrl: `https://graph.facebook.com/${id}/picture?type=large`
+		});
+
+		return cb(null, newUser);
+	} catch (e) {
+		return cb(e);
+	}
+};
+
+export const postFacebookLogin = (req, res) => {
+	res.redirect(routes.home);
+};
+
 export const changePassword = (req, res) => res.render('changePassword');
 
 export const editProfile = (req, res) => {
@@ -90,7 +123,23 @@ export const editProfile = (req, res) => {
 	});
 };
 
-export const userDetail = (req, res) => res.render('userDetail');
+export const userDetail = async (req, res) => {
+	const {
+		params: { id }
+	} = req;
+
+	try {
+		const user = await User.findById(id);
+
+		res.render('userDetail', {
+			pageTitle: 'User Detail',
+			user
+		});
+	} catch (e) {
+		res.redirect(routes.home);
+		console(e);
+	}
+};
 
 export const getMe = (req, res) => {
 	console.log(req.user);
