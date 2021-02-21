@@ -4,7 +4,7 @@ import routes from './routes';
 export const localsMiddleWare = (req, res, next) => {
 	res.locals.siteName = 'JS tube';
 	res.locals.routes = routes;
-	res.locals.user = req.user || null;
+	res.locals.loggedUser = req.user || null;
 
 	next();
 };

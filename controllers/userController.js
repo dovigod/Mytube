@@ -22,6 +22,7 @@ export const postJoin = async (req, res, next) => {
 				email
 			});
 			await User.register(user, password);
+			console.log('blahbla~~');
 			next();
 		} catch (e) {
 			console.log(e);
@@ -90,3 +91,11 @@ export const editProfile = (req, res) => {
 };
 
 export const userDetail = (req, res) => res.render('userDetail');
+
+export const getMe = (req, res) => {
+	console.log(req.user);
+	res.render('userDetail', {
+		pageTitle: 'User Detail',
+		user: req.user
+	});
+};
