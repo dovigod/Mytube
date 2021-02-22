@@ -1,7 +1,6 @@
 import passport from 'passport';
 import routes from '../routes';
 import User from '../models/user';
-import { RSA_NO_PADDING } from 'constants';
 
 export const getJoin = (req, res) => {
 	res.render('join', {
@@ -168,8 +167,6 @@ export const userDetail = async (req, res) => {
 	try {
 		const user = await User.findById(id).populate('videos');
 
-		console.log(user);
-
 		res.render('userDetail', {
 			pageTitle: 'User Detail',
 			user
@@ -192,10 +189,11 @@ export const userDetail = async (req, res) => {
 }
 */
 
-export const getMe = (req, res) => {
-	console.log(req.user);
-	res.render('userDetail', {
-		pageTitle: 'User Detail',
-		user: req.user
-	});
+export const getMe = async (req, res) => {
+	try {
+		const user = await User.findById(req.user.id).populate('videos');
+		res.render('userDetail', { pageTitle: 'User Detail', user });
+	} catch (error) {
+		res.redirect(routes.home);
+	}
 };

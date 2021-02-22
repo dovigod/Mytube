@@ -1,5 +1,6 @@
 import routes from '../routes';
 import Video from '../models/Videos';
+import user from '../models/user';
 
 export const home = async (req, res) => {
 	try {
@@ -50,7 +51,9 @@ export const deleteVideo = async (req, res) => {
 
 	try {
 		const video = await Video.findById(id);
-		if (video.creator !== req.user.id) {
+		const User = await user.findById(id);
+		console.log(User);
+		if (video.creator != req.user.id) {
 			throw Error();
 		} else {
 			await Video.findOneAndRemove({ _id: id });
