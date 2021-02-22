@@ -166,7 +166,9 @@ export const userDetail = async (req, res) => {
 	} = req;
 
 	try {
-		const user = await User.findById(id);
+		const user = await User.findById(id).populate('videos');
+
+		console.log(user);
 
 		res.render('userDetail', {
 			pageTitle: 'User Detail',
@@ -177,6 +179,18 @@ export const userDetail = async (req, res) => {
 		console(e);
 	}
 };
+
+/*
+{
+  comments: [],
+  videos: [ 60335e3d258b444d27e78d72 ],
+  _id: 6031f1ad795c3b39e8f2c695,
+  name: 'JS (Administrator)',
+  email: 'inaki936@gmail.com',
+  __v: 1,
+  avatarUrl: 'uploads/avatars/47d9f2f52cb21924f79d7170de982c8b'
+}
+*/
 
 export const getMe = (req, res) => {
 	console.log(req.user);
