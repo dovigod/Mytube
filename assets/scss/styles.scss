@@ -1,5 +1,6 @@
 @import 'config/_variable.scss';
 @import 'config/reset.scss';
+@import 'config/utils.scss';
 @import 'main.scss';
 @import 'partials/header.scss';
 @import 'pages/home.scss';
@@ -9,7 +10,14 @@
 @import 'partials/videoBlock.scss';
 @import 'pages/home.scss';
 @import 'pages/videoDetail.scss';
+@import 'pages/userProfile.scss';
 
 * {
 	box-sizing: border-box;
+}
+
+.u-avatar {
+	height: 80px;
+	background-color: #ea232c;
+	border-radius: 50%;
 }
