@@ -3,7 +3,12 @@ extends layouts/main
 
 block content
     .form-container
+        .record-container#jsRecordContainer
+            video#jsVideoPreview
+            button#jsRecordBtn Start Recording
+
         form(action=`/videos${routes.upload}` , method = "post" , enctype ="multipart/form-data")
+
 
             label(for ="file") Video File
             input(type="file", name="videoFile" , id = "file" , required = true, accept = "video/*")
